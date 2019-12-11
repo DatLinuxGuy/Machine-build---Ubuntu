@@ -1,2 +1,4 @@
 # Machine-build---Ubuntu
-Installs - Htop, Ukuu, Openssh-server, Openssh-client, Wine-staging, Sublime-text, Brave-browser, Exodus wallet, Net-tools, Exfat-utils, Git, Lutris, Build-essentials, Openvpn, Snapd, DXVK 1.4.6
+ 
+# Curl, Build-essential, Exfat-utils, Git, Openvpn, Htop, Apt-transport-https, Wget, Python-apt, Snapd, sublime, brave-browser, DXVK, ukuu, lutris, wine-stable, openssh-server, openssh-client, net-tools, lutris, sublime-text, riot-web, neofetch, vlc
+
