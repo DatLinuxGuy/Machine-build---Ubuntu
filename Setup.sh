@@ -2,15 +2,20 @@
 
 # This script is for new machines. 
 
-#The list of apps installed - 
+# The list of apps installed - 
 # Curl, Build-essential, Exfat-utils, Git, Openvpn, Htop, Apt-transport-https, Discord, Wget, Python-apt, Snapd, sublime, brave-browser, DXVK, ukuu, lutris, wine-stable, openssh-server, openssh-client, net-tools, lutris, sublime-text, riot-web, neofetch, vlc, network-manager-openvpn-gnome
 
 time=$(date +%R)
+
 if [ -e ~/Desktop/script.log ] ;then
 	cd ~/Desktop
-	mv script.log script.log.$time
-	cd
-fi
+	mv script.log script.log.incomplete
+else
+	if [ -e ~/Desktop/script.log.incomplete ] ;then 
+		mv script.log.incomplete script.log.incomplete2
+		cd
+	fi
+ fi
 
 # Updating default packages
 echo "Updating & upgrading current apps etc, this may take a while."
@@ -94,7 +99,7 @@ if  [ -e /snap/bin/riot-web ] ;then
 	echo -e "\e[92mriot\e[0m is already installed... Skipping"
 else
 	echo "Installing riot-im"
-	sudo snap install riot-web 
+	sudo snap install riot-web -y >> ~/Desktop/script.log 2>&1
 	echo -e "\e[92mOK\e[0m"
 	sleep 5
 fi
@@ -164,6 +169,7 @@ sleep 5
 # Installing DXVK
 echo "Installing DXVK"
 if [ ~/Downloads/dxvk-1.4.6.tar.gz ] ;then
+
 	cd ~/Downloads
 	wget https://github.com/doitsujin/dxvk/releases/download/v1.4.6/dxvk-1.4.6.tar.gz >> ~/Desktop/script.log 2>&1
 	sleep 4
@@ -182,17 +188,17 @@ else
 	cd ~/Downloads
 	echo "Downloading DXVK to ~/Downloads"
 	wget https://github.com/doitsujin/dxvk/releases/download/v1.4.6/dxvk-1.4.6.tar.gz >> ~/Desktop/script.log 2>&1
-	echo -e "\e[92mOK\e[0m"
-	if [ ~/Downloads/dxvk-1.4.6.tar.gz ] ;then
-		echo "File found"
-		tar -xvf dxvk-1.4.6.tar.gz 
-		sleep 3
-		cd dxvk-1.4.6/
-		chmod +x setup_dxvk.sh
-		./setup_dxvk.sh install
-		sleep 5
-		cd ../
-		echo -e "\e[92mOK\e[0m"
+	sleep 4
+		if [ ~/Downloads/dxvk-1.4.6.tar.gz ] ;then
+			echo -e "\e[92mOK\e[0m"
+			tar -xvf dxvk-1.4.6.tar.gz 
+			sleep 3
+			cd dxvk-1.4.6/
+			chmod +x setup_dxvk.sh
+			./setup_dxvk.sh install
+			sleep 5
+			cd ../
+			echo -e "\e[92mOK\e[0m"
 	fi
 fi
 
@@ -221,4 +227,7 @@ echo -e "\e[92mOK\e[0m"
 echo "Removing files downloaded in ~/Downloads"
 rm -rf dxvk-1.4.6* steam.deb Exodus-Wallet-Updater >> ~/Desktop/script.log 2>&1 
 echo -e "\e[92mOK\e[0m"
+sleep 1
+mv ~/Desktop/script.log ~/Desktop/script.log$time
+sleep 1
 echo "Script has finished :)"
