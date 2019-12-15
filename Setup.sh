@@ -159,12 +159,14 @@ fi
 echo -e "\e[92mPlease install all prompts from wine and then hit 'OK' when all packages are completee\e[0m"
 winecfg >> ~/Desktop/script.log 2>&1
 echo -e "\e[92mOK\e[0m"
+sleep 5
 
 # Installing DXVK
 echo "Installing DXVK"
 if [ ~/Downloads/dxvk-1.4.6.tar.gz ] ;then
 	cd ~/Downloads
-	sleep 2
+	wget https://github.com/doitsujin/dxvk/releases/download/v1.4.6/dxvk-1.4.6.tar.gz >> ~/Desktop/script.log 2>&1
+	sleep 4
 	tar -xvf dxvk-1.4.6.tar.gz 
 	sleep 3
 	cd dxvk-1.4.6/
