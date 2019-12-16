@@ -82,7 +82,7 @@ if [ -e /usr/bin/ukuu ] ;then
 else
 	echo "Adding ukuu repo"
 	sudo add-apt-repository ppa:teejee2008/ppa -y >> ~/Desktop/script.log 2>&1
-	ehco -e "\e[92mOK\e[0m"
+	echo -e "\e[92mOK\e[0m"
 fi
 
 # Adding lutris
