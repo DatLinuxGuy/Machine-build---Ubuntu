@@ -104,6 +104,16 @@ else
 	sleep 5
 fi
 
+# Adding discord 
+if  [ -e /snap/bin/discord ] ;then 
+	echo -e "\e[92mdisord\e[0m is already installed... Skipping"
+else
+	echo "Installing discord"
+	sudo snap install discord -y >> ~/Desktop/script.log 2>&1
+	echo -e "\e[92mOK\e[0m"
+	sleep 5
+fi
+
 # Download & Install Steam
 cd ~/Downloads 
 if [ -e /usr/bin/steam ] ;then
@@ -204,8 +214,8 @@ fi
 
 
 # Installing apps
-echo "Installing openssh-server openssh-client net-tools lutris sublime-text brave-browser neofetch vlc discord network-manager-openvpn-gnome flatpak, This may take a while"
-sudo apt install openssh-server openssh-client net-tools lutris sublime-text brave-browser neofetch vlc discord network-manager-openvpn-gnome flatpak -y >> ~/Desktop/script.log 2>&1 
+echo "Installing openssh-server openssh-client net-tools lutris sublime-text brave-browser neofetch vlc network-manager-openvpn-gnome flatpak, This may take a while"
+sudo apt install openssh-server openssh-client net-tools lutris sublime-text brave-browser neofetch vlc network-manager-openvpn-gnome flatpak -y >> ~/Desktop/script.log 2>&1 
 echo -e "\e[92mOK\e[0m"
 sleep 10
 
