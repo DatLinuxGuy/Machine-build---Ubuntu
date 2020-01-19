@@ -2,6 +2,7 @@
 #V1.0
 # Set a function for Apps
 
+
 function EssentialApps () {
   sudo apt install curl build-essential exfat-utils git openvpn htop git apt-transport-https wget python-apt snapd openssh-server openssh-client net-tools neofetch network-manager-openvpn-gnome flatpak -y
   sudo snap install vlc
@@ -12,7 +13,7 @@ if [ -e /usr/bin/ukuu ] ;then
 echo -e "\e[92mukuu\e[0m is already installed... Skipping"
   else
   echo "Adding ukuu repo"
-  sudo add-apt-repository ppa:teejee2008/ppa -y >> ~/Desktop/script.log 2>&1
+  sudo add-apt-repository ppa:teejee2008/ppa -y > /dev/null 2>&1
   echo -e "\e[92mOK\e[0m"
   sleep 4
   sudo apt install ukuu
@@ -24,13 +25,13 @@ if [ -e /usr/bin/brave-browser ] ;then
 echo -e "\e[92mBrave\e[0m is already installed... Skipping"
   else
   echo "Downloading key for brave-browser"
-  curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add - >> ~/Desktop/script.log 2>&1
+  curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add - > /dev/null 2>&1
   echo -e "\e[92mOK\e[0m"
   sleep 5
-  source /etc/os-release >> ~/Desktop/script.log 2>&1
+  source /etc/os-release > /dev/null 2>&1
   sleep 5
   echo "Adding brave-browser to repo"
-  echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list >> ~/Desktop/script.log 2>&1
+  echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list > /dev/null 2>&1
   echo -e "\e[92mOK\e[0m"
   sleep 5
   sudo apt install brave-browser
@@ -42,7 +43,7 @@ if [ -e /usr/bin/lutris ] ;then
   echo -e "\e[92mlutris\e[0m is already installed... Skipping"
 else 
   echo "Adding lutris repo"
-  sudo add-apt-repository ppa:lutris-team/lutris -y >> ~/Desktop/script.log 2>&1
+  sudo add-apt-repository ppa:lutris-team/lutris -y > /dev/null 2>&1
   ehco -e "\e[92mOK\e[0m"
   sleep 3
   sudo apt install lutris
@@ -56,13 +57,13 @@ if [ -e /usr/local/bin/exodus-update ] ;then
   echo -e "\e[92mexodus-update\e[0m is already installed... Skipping"
 else
   echo "Downloading Exodus-Wallet-Updater script to ~/Downloads"
-  git clone https://github.com/DatLinuxGuy/Exodus-Wallet-Updater >> ~/Desktop/script.log 2>&1
+  git clone https://github.com/DatLinuxGuy/Exodus-Wallet-Updater > /dev/null 2>&1
   echo -e "\e[92mOK\e[0m"
   sleep 5
   echo "Installing Exodus-Wallet from ~/Downloads"
-  sudo chmod +x Exodus-Wallet-Updater/exodus-update >> ~/Desktop/script.log 2>&1
+  sudo chmod +x Exodus-Wallet-Updater/exodus-update
   sleep 5
-  sudo mv Exodus-Wallet-Updater/exodus-update /usr/local/bin >> ~/Desktop/script.log 2>&1
+  sudo mv Exodus-Wallet-Updater/exodus-update /usr/local/bin
   sleep 5
   echo -e "\e[92mOK\e[0m"
   echo "Run 'exodus-update' without quotes to finish the install"
@@ -75,7 +76,7 @@ function riot.im () {
   echo -e "\e[92mriot\e[0m is already installed... Skipping"
 else
   echo "Installing riot-im"
-  sudo snap install riot-web -y >> ~/Desktop/script.log 2>&1
+  sudo snap install riot-web -y > /dev/null 2>&1
   echo -e "\e[92mOK\e[0m"
   sleep 5
 fi
@@ -86,11 +87,11 @@ if [ -e /snap/bin/subl ] ;then
   echo -e "\e[92msublime\e[0m is already installed... Skipping"
 else
   echo "Downloading and adding pub key for Sublime"
-  wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - >> ~/Desktop/script.log 2>&1
+  wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - > /dev/null 2>&1
   echo -e "\e[92mOK\e[0m"
   sleep 5
   echo "Adding Sublime to repo"
-  echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list >> ~/Desktop/script.log 2>&1
+  echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list > /dev/null 2>&1
   echo -e "\e[92mOK\e[0m"
   sleep 5
   sudo apt update 
